@@ -64,9 +64,17 @@ export const wedding = {
 
   events: [
     {
+      name: "Mehendi",
+      date: "Sunday, February 21",
+      time: "10:00 AM onwards",
+      venue: "The Lily Pond",
+      description: "A little mehendi, a lot of love, and a lifetime to celebrate.",
+      illustration: "mehendi.png"
+    },
+    {
       name: "Engagement Ceremony & Sangeet",
       date: "Sunday, February 21",
-      time: "7:30 PM onwards",
+      time: "5:00 PM onwards",
       venue: "The Lily Pond",
       description: "An evening of Dance, laughter, music and blessings.",
       illustration: "engagement.png"

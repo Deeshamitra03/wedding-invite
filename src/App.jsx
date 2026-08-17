@@ -322,6 +322,7 @@ function App() {
   <div className="events-grid">
     {wedding.events.map((event, i) => {
       const eventIllustrations = [
+        "mehendi.png",
         "engagement.png",
         "wedding.png",
         "reception.png"
@@ -376,8 +377,8 @@ function App() {
                   <p>Mrs. Sunanda Roy and Mr. Pradip Kumar Roy heartly invite you and your family to join them in this joyous occasion of their one and only son.</p>
                 </motion.div>
                 <motion.div className="culture-card tamil-card" whileHover={{ y:-6 }}>
-                  <h3>மங்களம் விவாஹம்</h3><strong>Bride's Family</strong>
-                  <p>Mrs. Sindhu S.K and Mr. Ravishankar Venkateshswaram heartly invite you and your family to join them in this joyous occasion of their daughter.</p>
+                  <h3>மங்கள விவாஹம்</h3><strong>Bride's Family</strong>
+                  <p>Mrs. Sindhu S.K and Mr. Ravishankar Venkateswaran heartly invite you and your family to join them in this joyous occasion of their daughter.</p>
                 </motion.div>
               </div>
               <div className="parents-note">
