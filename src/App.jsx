@@ -210,14 +210,17 @@ function App() {
 
           <motion.button
   className="primary-button invitation-button"
-  onClick={() => {
+  onClick={async () => {
     const music = document.querySelector("audio");
 
     if (music) {
-      music.currentTime = 0;
-      music.play().catch((error) => {
+      try {
+        music.currentTime = 0;
+        await music.play();
+        setPlaying(true);
+      } catch (error) {
         console.log("Music could not start:", error);
-      });
+      }
     }
 
     setOpened(true);
