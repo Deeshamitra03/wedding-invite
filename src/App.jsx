@@ -118,7 +118,7 @@ function Countdown() {
 function MusicButton() {
   const [playing, setPlaying] = useState(true);
   const [audio] = useState(() => new Audio(wedding.music));
-  useEffect(() => () => audio.pause(), [audio]);
+  useEffect(() => () => audio.play(), [audio]);
   const toggle = async () => {
     if (playing) {
       audio.pause(); setPlaying(false); return;
@@ -211,16 +211,12 @@ function App() {
           <motion.button
   className="primary-button invitation-button"
   onClick={async () => {
-    const music = document.querySelector("audio");
-
-    if (music) {
-      try {
-        music.currentTime = 0;
-        await music.play();
-        setPlaying(true);
-      } catch (error) {
-        console.log("Music could not start:", error);
-      }
+    try {
+      audio.currentTime = 0;
+      await audio.play();
+      setPlaying(true);
+    } catch (error) {
+      console.log("Music could not start:", error);
     }
 
     setOpened(true);
