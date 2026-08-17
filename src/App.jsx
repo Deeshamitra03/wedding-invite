@@ -287,7 +287,7 @@ function App() {
               <div className="timeline">
                 {[['Long Before','Two little hearts, unknown of the journey ahead.','childhood_illustration.png'],['12 Years Ago','Our story began with friendship, laughter & countless dreams.','young.jpg'],['The Journey','Through ups & downs, we grew together, hand in hand.','memories.png'],['Countless Memories','From little moments to big milestones, we made memories.','couple_pic.png'],['Today','12 years of choosing each other, every single day.','today.jpg']].map(([title,text,img],i) => (
                   <motion.article className="story-item" key={title} initial={{ opacity:0, y:25 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true, amount:.3 }} transition={{ delay:i*.08 }}>
-                    <div className="story-icon">{img ? <img src={`public/images/${img}`} alt="Childhood memory"/> : i===1 ? '📚' : i===2 ? '🚲' : i===3 ? '📷' : '♥'}</div>
+                    <div className="story-icon">{img ? <img src={`/images/${img}`} alt="Childhood memory"/> : i===1 ? '📚' : i===2 ? '🚲' : i===3 ? '📷' : '♥'}</div>
                     <h3>{title}</h3><p>{text}</p>
                   </motion.article>
                 ))}
