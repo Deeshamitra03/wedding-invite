@@ -209,16 +209,18 @@ function App() {
           </p>
 
           <motion.button
-  className="primary-button invitation-button"
-  onClick={() => {
-    const music = document.querySelector("audio");
+  onClick={async () => {
+  const music = document.querySelector("audio");
 
-    if (music) {
+  if (music) {
+    try {
       music.currentTime = 0;
-      music.play().catch((error) => {
-        console.log("Music could not start:", error);
-      });
+      await music.play();
+      setPlaying(true);
+    } catch (error) {
+      console.log("Music could not start:", error);
     }
+  }
 
     setOpened(true);
   }}
