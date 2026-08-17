@@ -271,7 +271,7 @@ function App() {
               <div className="hero-topper">WELCOME TO OUR FOREVER</div>
               <p className="bengali hero-bengali">শুভ বিবাহ</p>
               <motion.div className="hero-art-wrap" initial={{ opacity: 0, scale: .96, y: 25 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.1 }}>
-                <img className="hero-art" src="public\images\couple_art.png" alt="Illustrated bride and groom" />
+                <img className="hero-art" src="images\couple_art.png" alt="Illustrated bride and groom" />
               </motion.div>
               <div className="hero-copy">
                 <h1><span>{wedding.bride.name}</span><Heart size={30} fill="currentColor"/><span>{wedding.groom.name}</span></h1>
