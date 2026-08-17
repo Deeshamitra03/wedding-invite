@@ -211,13 +211,12 @@ function App() {
           <motion.button
   className="primary-button invitation-button"
   onClick={async () => {
-    try {
-      audio.currentTime = 0;
-      await audio.play();
-      setPlaying(true);
-    } catch (error) {
-      console.log("Music could not start:", error);
-    }
+  try {
+    await audio.play();
+    setPlaying(true);
+  } catch (error) {
+    console.log("Music could not start:", error);
+  }
 
     setOpened(true);
   }}
