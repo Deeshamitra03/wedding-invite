@@ -81,7 +81,7 @@ export const wedding = {
     },
     {
       name: "Reception",
-      date: "Sunday, February 22",
+      date: "Monday, February 22",
       time: "6:30 PM onwards",
       venue: "The Lily Pond",
       description: "Dinner, dancing and celebrating forever together.",
