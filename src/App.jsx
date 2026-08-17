@@ -118,7 +118,7 @@ function Countdown() {
 function MusicButton() {
   const [playing, setPlaying] = useState(true);
   const [audio] = useState(() => new Audio(wedding.music));
-  useEffect(() => () => audio.play(), [audio]);
+  useEffect(() => () => audio.pause(), [audio]);
   const toggle = async () => {
     if (playing) {
       audio.pause(); setPlaying(false); return;
