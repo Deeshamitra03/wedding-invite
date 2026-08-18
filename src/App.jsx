@@ -414,7 +414,7 @@ function App() {
             </Section>
           </main>
 
-          <footer className="footer"><div>শুভ বিবাহ</div><span>12 years · one love story · one forever</span></footer>
+          <footer className="footer"><div>শুভ বিবাহ | शुभ विवाह</div><span>12 years · one love story · one forever</span></footer>
         </>
       )}
     </div>
