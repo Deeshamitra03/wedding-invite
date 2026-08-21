@@ -155,7 +155,35 @@ function App() {
   const [opening, setOpening] = useState(false);
   const [opened, setOpened] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [language, setLanguage] = useState("bengali");
   const nav = ["story", "events", "families", "rsvp"];
+  const changeLanguage = (newLanguage) => {
+  setLanguage(newLanguage);
+
+  const currentMusic = window.weddingMusic;
+
+  if (!currentMusic) return;
+
+  const wasPlaying = !currentMusic.paused;
+
+  currentMusic.pause();
+
+  const newMusic = new Audio(
+    newLanguage === "tamil"
+      ? "/music/tamil-song.mp3"
+      : "/music/wedding-song.mp3"
+  );
+
+  newMusic.loop = true;
+
+  window.weddingMusic = newMusic;
+
+  if (wasPlaying) {
+    newMusic.play().catch((error) => {
+      console.log("Music could not start:", error);
+    });
+  }
+};
   const go = (id) => {
     setMenu(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -273,6 +301,21 @@ function App() {
             <nav className="desktop-nav">
               {nav.map(id => <button key={id} onClick={() => go(id)}>{id === "story" ? "Our Story" : id[0].toUpperCase() + id.slice(1)}</button>)}
             </nav>
+            <div className="language-toggle">
+  <button
+    className={language === "bengali" ? "active" : ""}
+    onClick={() => changeLanguage("bengali")}
+  >
+    বাংলা
+  </button>
+
+  <button
+    className={language === "tamil" ? "active" : ""}
+    onClick={() => changeLanguage("tamil")}
+  >
+    தமிழ்
+  </button>
+</div>
             <button className="menu-button" onClick={() => setMenu(!menu)}>{menu ? <X/> : <Menu/>}</button>
           </header>
 
@@ -281,25 +324,35 @@ function App() {
               {nav.map(id => <button key={id} onClick={() => go(id)}>{id === "story" ? "Our Story" : id[0].toUpperCase() + id.slice(1)}</button>)}
             </motion.nav>}
           </AnimatePresence>
-
+            
           <MusicButton />
 
           <main>
             <section id="home" className="hero">
               <Alpana className="hero-alpana" />
+              
               <div className="hero-topper">WELCOME TO OUR FOREVER</div>
-              <p className="bengali hero-bengali">শুভ বিবাহ</p>
+              <p className="bengali hero-bengali">{language === "tamil" ? "மங்கள விவாஹம்" : "শুভ বিবাহ"}</p>
               <motion.div className="hero-art-wrap" initial={{ opacity: 0, scale: .96, y: 25 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 1.1 }}>
-                <img className="hero-art" src="images\couple_art.png" alt="Illustrated bride and groom" />
+                <img
+  className="hero-art"
+  src={
+    language === "tamil"
+      ? "/images/tamil-couple.png"
+      : "/images/couple_art.png"
+  }
+  alt="Illustrated bride and groom"
+/>
               </motion.div>
               <div className="hero-copy">
                 <h1><span>{wedding.bride.name}</span><Heart size={30} fill="currentColor"/><span>{wedding.groom.name}</span></h1>
                 <p>12 YEARS · ONE LOVE STORY · ONE FOREVER</p>
-                <div className="hero-message">দুই পরিবারের ভালোবাসায়, আমাদের চিরকালের শুরু...</div>
+                <div className="hero-message">{language === "tamil"
+  ? "இரு குடும்பங்களின் அன்பில், எங்கள் என்றென்றும் தொடரும் பயணத்தின் தொடக்கம்..."
+  : "দুই পরিবারের ভালোবাসায়, আমাদের চিরকালের শুরু..."}</div>
               </div>
               <button className="scroll-cue" onClick={() => go("story")}><ChevronDown/></button>
-              <Topor className="topor topor-left" />
-              <PanPata className="pan pan-right" />
+             
             </section>
 
             <Section id="story" eyebrow="Our Story" title="12 Years of Love">
@@ -407,14 +460,18 @@ function App() {
               </div>
               <div className="closing-note">
                 <PanPata className="pan-closing" />
-                <p className="bengali">ভালোবাসা, পরিবার এবং আশীর্বাদে</p>
+                <p className="bengali">{language === "tamil"
+  ? "அன்பு, குடும்பம் மற்றும் ஆசீர்வாதத்துடன்"
+  : "ভালোবাসা, পরিবার এবং আশীর্বাদে"}ে</p>
                 <h3>{wedding.bride.name} <span>♡</span> {wedding.groom.name}</h3>
                 <p>With love, from our families.</p>
               </div>
             </Section>
           </main>
 
-          <footer className="footer"><div>শুভ বিবাহ | शुभ विवाह</div><span>12 years · one love story · one forever</span></footer>
+          <footer className="footer"><div>{language === "tamil"
+  ? "மங்கள விவாஹம் | शुभ विवाह"
+  : "শুভ বিবাহ |शुभ विवाह"}</div><span>12 years · one love story · one forever</span></footer>
         </>
       )}
     </div>
